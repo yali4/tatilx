@@ -1,0 +1,17 @@
+{
+  "name": "tatilbudur-lw",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "tatibudur",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-html-extend": "^1.1.6",
+    "gulp-less": "^3.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "less-plugin-autoprefix": "^1.5.1"
+  }
+}

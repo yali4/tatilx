@@ -1,0 +1,74 @@
+// default
+@gray-nav-tabs-link-bg: rgba(146, 146, 146, .82);
+@gray-nav-tabs-link-color: #fff;
+@gray-nav-tabs-link-border-color: #7f7c7d;
+@gray-nav-tabs-narrow-line-height: 0.62857143;
+
+// hover
+@gray-nav-tabs-link-hover-bg: rgba(146, 146, 146, 1);
+
+// active
+@gray-nav-tabs-active-link-bg: rgba(255, 255, 255, 1);
+@gray-nav-tabs-active-link-color: #003366;
+
+.gray-nav-tabs {
+
+  > li {
+    float: left;
+
+    // Actual tabs (as links)
+    > a {
+      color: @gray-nav-tabs-link-color;
+      font-size: 16px;
+      line-height: @line-height-base;
+      border-right: solid 1px @gray-nav-tabs-link-border-color;
+      background-color: @gray-nav-tabs-link-bg;
+
+      &:hover,
+      &:focus {
+        background-color: @gray-nav-tabs-link-hover-bg;
+      }
+
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @gray-nav-tabs-active-link-color;
+        background: @gray-nav-tabs-active-link-bg;
+        cursor: default;
+      }
+    }
+
+    // Last Child border
+    &:last-child > a {
+      border-right: 0;
+    }
+
+  }
+
+  &.narrow > li > a {
+    line-height: @gray-nav-tabs-narrow-line-height;
+  }
+
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    .nav-justified();
+    .nav-tabs-justified();
+  }
+}
+
+.gray-tab-content {
+
+  > .tab-pane {
+    background: #fff;
+    padding: 10px;
+  }
+
+  &.narrow > .tab-pane {
+    padding: 5px;
+  }
+
+}

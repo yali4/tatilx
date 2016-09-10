@@ -1,0 +1,59 @@
+@search-font-color: #989898;
+@search-icon-color: #ff9900;
+@search-icon-font-size: 24px;
+@search-border-color: #cbcbcb;
+@search-element-padding: 6px;
+
+.search-box {
+
+  .table-row {
+
+    > .icon-addon {
+      width: 42px;
+    }
+
+    .fa {
+      margin: 0 9px;
+      color: @search-icon-color;
+      font-size: @search-icon-font-size;
+
+      &.fa-long-arrow-right {
+        color: @search-font-color;
+      }
+
+    }
+
+    .form-control {
+      border: 0;
+      border-radius: 0;
+      outline: 0;
+      padding: @search-element-padding;
+      .box-shadow(none);
+    }
+
+  }
+
+  .main-row {
+
+    > .bordered {
+
+      .responsive-min-md({
+        padding-left: 10px;
+        border-left: solid 1px @search-border-color;
+      });
+
+      .responsive-max-sm({
+        padding-top: 5px;
+        margin-top: 5px;
+        border-top: solid 1px @search-border-color;
+      });
+
+    }
+
+  }
+
+  .human-select {
+    padding: @search-element-padding;
+  }
+
+}

@@ -1,0 +1,68 @@
+<!-- @@master  = ./shared/_layout.html-->
+
+<!-- @@block  =  content-->
+<div class="container">
+
+    <h1>Normal Tabs</h1>
+
+    <div style="background: #797474; padding: 35px;">
+
+        <!-- Nav tabs -->
+        <ul class="nav gray-nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home_first" aria-controls="home" role="tab" data-toggle="tab">OTEL</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile_first" aria-controls="profile" role="tab" data-toggle="tab">TUR</a>
+            </li>
+            <li role="presentation">
+                <a href="#messages_first" aria-controls="messages" role="tab" data-toggle="tab">UÇAK</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content gray-tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home_first">OTEL ARAMA</div>
+            <div role="tabpanel" class="tab-pane" id="profile_first">TUR ARAMA</div>
+            <div role="tabpanel" class="tab-pane" id="messages_first">UÇAK ARAMA</div>
+        </div>
+
+    </div>
+
+    <h1>Narrow Tabs</h1>
+
+    <div style="background: #797474; padding: 35px;">
+
+        <!-- Nav tabs -->
+        <ul class="nav gray-nav-tabs narrow" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">OTEL</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">TUR</a>
+            </li>
+            <li role="presentation">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">UÇAK</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content gray-tab-content narrow">
+            <div role="tabpanel" class="tab-pane active" id="home">OTEL ARAMA</div>
+            <div role="tabpanel" class="tab-pane" id="profile">TUR ARAMA</div>
+            <div role="tabpanel" class="tab-pane" id="messages">UÇAK ARAMA</div>
+        </div>
+
+    </div>
+
+
+    <h1>Search Tabs</h1>
+
+    <div style="background: #797474; padding: 35px;">
+
+        <!-- @@include components/search-tab.html -->
+
+    </div>
+
+</div>
+<!-- @@close-->
