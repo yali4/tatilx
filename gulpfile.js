@@ -1,11 +1,12 @@
-/**
- * Created by efe.sozen on 3.09.2016.
- */
-var gulp        = require('gulp'),
+var path        = require("path"),
+    gulp        = require('gulp'),
+    gulpif      = require('gulp-if'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
     less        = require('gulp-less'),
     cleanCSS    = require('gulp-clean-css'),
+    rework      = require('gulp-rework'),
+    reworkUrl   = require('rework-plugin-url'),
     LessAutoprefix = require('less-plugin-autoprefix'),
     autoprefix  = new LessAutoprefix({ browsers: ['last 2 versions'] });
 
@@ -53,6 +54,111 @@ var bases = {
 // The default task (called when you run `gulp` from cli)
 gulp.task('default', ['']);
 
+gulp.task('merge-assets', function(){
+
+    var plugins = [
+
+        {
+            "name" : "app",
+            "vendor" : "source/app/css/",
+            "files" : [
+                "app.less"
+            ],
+            "images" : ""
+        },
+        {
+            "name" : "owl-carousel",
+            "vendor" : "source/plugins/owl-carousel/",
+            "files" : [
+                "owl.carousel.css",
+                "owl.theme.css",
+                "owl.transitions.css"
+            ]
+        }
+
+    ];
+
+    function executePlugin(name, vendor, files, plugin)
+    {
+        files = files.map(function(file){
+
+            return vendor + file;
+
+        });
+
+        gulp.src(files)
+            .pipe(less())
+            .pipe(rework(reworkUrl(function (url) {
+
+                var fontRegex = /.+(eot|woff2|woff|ttf|svg)/,
+                    imageRegex = /.+(jpg|jpeg|png|gif)/;
+
+                var fontMatch = url.match(fontRegex),
+                    imageMatch = url.match(imageRegex);
+
+                var prevDir = url.match(/\.\.\//g);
+                var prevDirCount = prevDir == null ? 0 : prevDir.length;
+
+                var normalFilePath = path.normalize( vendor +  url );
+                var vendorPath = path.normalize( vendor + '../'.repeat(prevDirCount) );
+
+                var cleanFilePath = normalFilePath
+                    .replace(vendorPath, "")
+                    .replace(/\\/g, '/')
+                    .replace(/^(img\/|fonts\/)/, "");
+
+                var cleanPathParse = path.parse(cleanFilePath);
+
+                if ( fontMatch )
+                {
+                    var destination = "";
+
+                    if ( cleanPathParse.dir )
+                    {
+                        destination = cleanPathParse.dir;
+                    }
+
+                    var normalFontPath = normalFilePath.match(fontRegex);
+
+                    gulp.src( normalFontPath[0] )
+                        .pipe(gulp.dest( "./dist/css/fonts/" + destination ));
+
+                    var resultDir = ("/fonts/" + destination).replace(/^\/|\/$/gm, "");
+
+                    return resultDir + "/" + cleanPathParse.base;
+                }
+
+                else if ( imageMatch )
+                {
+                    var destination = ("images" in plugin ? plugin.images : name);
+
+                    if ( cleanPathParse.dir )
+                    {
+                        destination = destination + "/" +  cleanPathParse.dir;
+                    }
+
+                    gulp.src( normalFilePath )
+                        .pipe(gulp.dest( "./dist/css/img/" + destination ));
+
+                    var resultDir = ("/img/" + destination).replace(/^\/|\/$/gm, "");
+
+                    return resultDir + "/" + cleanPathParse.base;
+                }
+
+                return url;
+
+            })))
+            .pipe(gulp.dest("./dist/css/"));
+    }
+
+    plugins.forEach(function(plugin){
+
+        executePlugin(plugin.name, plugin.vendor, plugin.files, plugin);
+
+    });
+
+});
+
 gulp.task('buildJs', ['buildBsJs','scripts']);
 
 gulp.task('scripts',function () {
@@ -74,7 +180,10 @@ gulp.task('buildBsJs',function () {
 });
 
 gulp.task('styles',function () {
-    gulp.src(['source/less/app.less', 'source/plugins/owl-carousel/owl.carousel.css'])
+    gulp.src([
+        'source/less/app.less',
+        'source/plugins/owl-carousel/owl.carousel.css'
+    ])
         .pipe(less({
             plugins : [autoprefix]
         }))
@@ -89,8 +198,9 @@ gulp.task('static-assets', function(){
     gulp.src(bases.source + "/fonts/**/*")
         .pipe(gulp.dest(bases.assets + "/fonts"));
 
-    gulp.src(bases.source + "/img/**/*")
-        .pipe(gulp.dest(bases.assets + "/img"));
+    
+    //gulp.src(bases.source + "/img/**/*")
+        //.pipe(gulp.dest(bases.assets + "/img"));
 
 });
 
