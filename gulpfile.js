@@ -96,53 +96,52 @@ gulp.task('merge-assets', function(){
                 var fontMatch = url.match(fontRegex),
                     imageMatch = url.match(imageRegex);
 
-                var prevDir = url.match(/\.\.\//g);
-                var prevDirCount = prevDir == null ? 0 : prevDir.length;
-
-                var normalFilePath = path.normalize( vendor +  url );
-                var vendorPath = path.normalize( vendor + '../'.repeat(prevDirCount) );
-
-                var cleanFilePath = normalFilePath
-                    .replace(vendorPath, "")
-                    .replace(/\\/g, '/')
-                    .replace(/^(img\/|fonts\/)/, "");
-
-                var cleanPathParse = path.parse(cleanFilePath);
-
-                if ( fontMatch )
+                if ( fontMatch || imageMatch )
                 {
-                    var destination = "";
+                    var destination = [];
+                    var prevCount = (url.match(/\.\.\//g) || []).length;
 
-                    if ( cleanPathParse.dir )
+                    var normalFilePath = path.normalize( vendor +  url );
+                    var vendorPath = path.normalize( vendor + "../".repeat(prevCount) );
+
+                    var cleanFilePath = normalFilePath.substring(vendorPath.length).replace(/\\/gm, "/");
+
+                    if ( fontMatch )
                     {
-                        destination = cleanPathParse.dir;
+                        cleanFilePath = cleanFilePath.replace(/^fonts\//, "");
+                    }
+                    else if ( imageMatch )
+                    {
+                        cleanFilePath = cleanFilePath.replace(/^img\//, "");
                     }
 
-                    var normalFontPath = normalFilePath.match(fontRegex);
+                    var cleanPathParse = path.parse(cleanFilePath);
 
-                    gulp.src( normalFontPath[0] )
-                        .pipe(gulp.dest( "./dist/css/fonts/" + destination ));
-
-                    var resultDir = ("/fonts/" + destination).replace(/^\/|\/$/gm, "");
-
-                    return resultDir + "/" + cleanPathParse.base;
-                }
-
-                else if ( imageMatch )
-                {
-                    var destination = ("images" in plugin ? plugin.images : name);
-
-                    if ( cleanPathParse.dir )
+                    if ( fontMatch )
                     {
-                        destination = destination + "/" +  cleanPathParse.dir;
+                        destination.push("fonts", cleanPathParse.dir);
+
+                        destination = destination.filter(function(str){ return str.length > 0 });
+
+                        var normalFontPath = normalFilePath.match(fontRegex);
+
+                        gulp.src( normalFontPath[0] )
+                            .pipe(gulp.dest( "./dist/css/" + destination.join("/") ));
+
+                        return destination.join("/") + "/" + cleanPathParse.base;
                     }
 
-                    gulp.src( normalFilePath )
-                        .pipe(gulp.dest( "./dist/css/img/" + destination ));
+                    else if ( imageMatch )
+                    {
+                        destination.push("img", ("images" in plugin ? plugin.images : name),  cleanPathParse.dir);
 
-                    var resultDir = ("/img/" + destination).replace(/^\/|\/$/gm, "");
+                        destination = destination.filter(function(str){ return str.length > 0 });
 
-                    return resultDir + "/" + cleanPathParse.base;
+                        gulp.src( normalFilePath )
+                            .pipe(gulp.dest( "./dist/css/" + destination.join("/") ));
+
+                        return destination.join("/") + "/" + cleanPathParse.base;
+                    }
                 }
 
                 return url;
