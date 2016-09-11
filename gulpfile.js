@@ -194,8 +194,8 @@ gulp.task('styles',function () {
 
 gulp.task('static-assets', function(){
 
-    gulp.src(bases.source + "/fonts/**/*")
-        .pipe(gulp.dest(bases.assets + "/fonts"));
+    //gulp.src(bases.source + "/fonts/**/*")
+        //.pipe(gulp.dest(bases.assets + "/fonts"));
 
     
     //gulp.src(bases.source + "/img/**/*")
