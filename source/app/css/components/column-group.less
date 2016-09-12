@@ -5,13 +5,20 @@
   min-height: 34px;
   border-collapse: separate;
 
+  > .col-fixed {
+    position: absolute;
+    height: 100%;
+  }
+  
   > .col-addon,
   > .col-case {
+    position: relative;
     display: table-cell;
+    vertical-align: middle;
   }
 
   > .center {
-    vertical-align: middle;
+    text-align: center;
   }
 
   > .nowrap {

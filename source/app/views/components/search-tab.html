@@ -14,93 +14,12 @@
 <!-- Tab panes -->
 <div class="tab-content gray-tab-content narrow">
     <div role="tabpanel" class="tab-pane active" id="hotel">
-
-        <div class="search-box hotel-search">
-
-            <div class="row no-gutter main-row">
-
-                <div class="col-xxs-24 col-md-7">
-
-                    <div class="table-row">
-
-                        <div class="col-addon icon-addon center text-center">
-                            <i class="fa fa-map-marker"></i>
-                        </div>
-
-                        <div class="col-case">
-                            <input type="text" class="form-control" placeholder="Otel, Şehir veya Bölge Adı">
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-xxs-24 col-md-7 bordered">
-
-                    <div class="table-row">
-
-                        <div class="col-addon icon-addon center text-center">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-
-                        <div class="col-case">
-
-                            <div class="table-row">
-
-                                <div class="col-case">
-                                    <input type="text" class="form-control" placeholder="Giriş Tarihi">
-                                </div>
-
-                                <div class="col-addon center">
-                                    <i class="fa fa-long-arrow-right"></i>
-                                </div>
-
-                                <div class="col-case">
-                                    <input type="text" class="form-control" placeholder="Çıkış Tarihi">
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-xxs-24 col-md-6 bordered">
-
-                    <div class="table-row">
-
-                        <div class="col-addon icon-addon center text-center">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                        <div class="col-case center">
-
-                            <div class="human-select">
-                                <div class="human-caption">2 Yetişkin - 0 Çocuk</div>
-                                <div class="human-wrapper">
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-xxs-24 col-md-4">
-                    <button class="btn btn-orange btn-block btn-sharp">
-                        <i class="fa fa-search"></i> ARA
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
+        <!-- @@include search-partial/hotel-search.html -->
     </div>
-    <div role="tabpanel" class="tab-pane" id="tour"></div>
-    <div role="tabpanel" class="tab-pane" id="airplane"></div>
+    <div role="tabpanel" class="tab-pane" id="tour">
+        <!-- @@include search-partial/tour-search.html -->
+    </div>
+    <div role="tabpanel" class="tab-pane" id="airplane">
+        <!-- @@include search-partial/airplane-search.html -->
+    </div>
 </div>

@@ -3,17 +3,203 @@
 @search-icon-font-size: 24px;
 @search-border-color: #cbcbcb;
 @search-element-padding: 6px;
+@search-element-height: 40px;
+@search-fixed-col-width: 40px;
 
 .search-box {
+  position: relative;
+
+  input.daterange {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 0;
+    bottom: -5px;
+    opacity: 0;
+  }
+
+  span.startfocus,
+  span.endfocus {
+    position: absolute;
+    background: #059AF9;
+    top: 4px;
+    left: 10px;
+    right: 10px;
+    height: 32px;
+    z-index: 555;
+    border-radius: 30px;
+    opacity: 0.3;
+    display: none;
+  }
+
+  span.startfocus {}
+  span.endfocus {}
+
+  .human-select {
+
+    .human-caption {
+      position: relative;
+    }
+
+    .human-wrapper {
+      position: absolute;
+      display: none;
+      left: 0;
+      right: 0;
+      top: 45px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 255px;
+      background: #fff;
+      padding: 10px;
+      z-index: 55;
+      .box-shadow(1px 2px 10px rgba(0,0,0, .3));
+
+      label {
+        margin: 0;
+        font-size: 13px;
+        font-weight: normal;
+      }
+
+      select {
+        background: transparent;
+        border: solid 1px #000;
+        padding: 2px;
+        display: block;
+        width: 100%;
+        color: #444;
+      }
+
+      > label {
+        float: left;
+        width: 50%;
+
+        &:first-of-type {
+          padding-right: 5px;
+        }
+
+        &:last-of-type {
+          padding-left: 5px;
+        }
+
+        select {
+          margin: 5px 0 10px;
+        }
+
+      }
+
+      .new-child {
+        float: left;
+        width: 100%;
+        margin-bottom: -10px;
+
+        .children{
+          width: 100%;
+          height: 37px;
+          line-height: 26px;
+          padding-left: 10px;
+
+          label, select {
+            float: left;
+            width: 50%;
+          }
+
+          label {
+            text-indent: -10px;
+          }
+
+        }
+
+      }
+
+      &:before{
+        position: absolute;
+        display: block;
+        top: -5px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background: #fff;
+        -moz-transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+      }
+
+    }
+
+  }
+
+  > .row {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+
+  .row {
+
+    .bordered {
+
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        bottom: 5px;
+
+        border-left: solid 1px @search-border-color;
+      }
+
+
+      &:before {
+        .responsive-min-md({
+          content: "";
+        });
+      }
+
+
+      /*
+      .responsive-max-sm({
+        padding-top: 5px;
+        margin-top: 5px;
+        border-top: solid 1px @search-border-color;
+      });
+      */
+
+    }
+
+    .btn-block {
+      margin-top: 4px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+  }
 
   .table-row {
 
-    > .icon-addon {
-      width: 42px;
+    > .icon-addon,
+    > .col-fixed {
+      width: @search-fixed-col-width;
+    }
+
+    > .col-fixed {
+      pointer-events: none;
+
+      .fa {
+        position: relative;
+        margin-top: 8px;
+      }
+
+    }
+
+    > .fixed-case {
+      padding-left: @search-fixed-col-width;
+    }
+
+    > .element-case {
+      height: @search-element-height;
     }
 
     .fa {
-      margin: 0 9px;
       color: @search-icon-color;
       font-size: @search-icon-font-size;
 
@@ -27,33 +213,30 @@
       border: 0;
       border-radius: 0;
       outline: 0;
+      height: @search-element-height;
       padding: @search-element-padding;
+      background: transparent;
       .box-shadow(none);
-    }
 
-  }
+      &.fixed-control {
+        padding-left: @search-fixed-col-width;
+      }
 
-  .main-row {
+      &.reset-control {
+        padding-left: 0;
+        padding-right: 0;
+      }
 
-    > .bordered {
-
-      .responsive-min-md({
-        padding-left: 10px;
-        border-left: solid 1px @search-border-color;
-      });
-
-      .responsive-max-sm({
-        padding-top: 5px;
-        margin-top: 5px;
-        border-top: solid 1px @search-border-color;
-      });
+      &.date-control {
+        text-align: center;
+      }
 
     }
 
-  }
+    select.form-control {
+      -webkit-appearance: none;
+    }
 
-  .human-select {
-    padding: @search-element-padding;
   }
 
 }

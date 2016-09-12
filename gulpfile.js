@@ -59,7 +59,8 @@ gulp.task('styles', function(){
             "files" : [
                 "owl-carousel/owl.carousel.css",
                 "owl-carousel/owl.theme.css",
-                "owl-carousel/owl.transitions.css"
+                "owl-carousel/owl.transitions.css",
+                "date-range/datetime.less"
             ],
             "concat" : "lib.css"
         }
@@ -93,6 +94,10 @@ gulp.task('scripts', function(){
     gulp.src([
         // jQuery
         './source/plugins/jquery/dist/jquery.js',
+        // Moment
+        './source/plugins/moment/moment.min.js',
+        // Date Range
+        './source/plugins/date-range/datetime.js',
         // Owl Carousel
         './source/plugins/owl-carousel/owl.carousel.js',
         // Bootstrap
@@ -107,7 +112,7 @@ gulp.task('scripts', function(){
         './source/app/js/bootstrap/popover.js',
         './source/app/js/bootstrap/scrollspy.js',
         './source/app/js/bootstrap/tab.js',
-        './source/app/js/bootstrap/affix.js',
+        './source/app/js/bootstrap/affix.js'
     ])
         .pipe(concat("lib.js"))
         .pipe(gulp.dest("dist/assets/js"));
@@ -172,7 +177,8 @@ gulp.task('watch', function(){
     // builder
     gulp.watch([
         './source/app/css/**/*.less',
-        './source/plugins/**/*.css'
+        './source/plugins/**/*.css',
+        './source/plugins/**/*.less'
     ], ['styles']);
 
     // static images
