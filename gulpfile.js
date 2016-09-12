@@ -57,9 +57,8 @@ gulp.task('styles', function(){
         {
             "vendor" : "source/plugins/",
             "files" : [
-                "owl-carousel/owl.carousel.css",
-                "owl-carousel/owl.theme.css",
-                "owl-carousel/owl.transitions.css"
+                "owl-carousel/owl.transitions.css",
+                "owl-carousel/owl.carousel.css"
             ],
             "concat" : "lib.css"
         }
@@ -107,7 +106,7 @@ gulp.task('scripts', function(){
         './source/app/js/bootstrap/popover.js',
         './source/app/js/bootstrap/scrollspy.js',
         './source/app/js/bootstrap/tab.js',
-        './source/app/js/bootstrap/affix.js',
+        './source/app/js/bootstrap/affix.js'
     ])
         .pipe(concat("lib.js"))
         .pipe(gulp.dest("dist/assets/js"));
