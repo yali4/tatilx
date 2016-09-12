@@ -57,9 +57,8 @@ gulp.task('styles', function(){
         {
             "vendor" : "source/plugins/",
             "files" : [
-                "owl-carousel/owl.carousel.css",
-                "owl-carousel/owl.theme.css",
                 "owl-carousel/owl.transitions.css",
+                "owl-carousel/owl.carousel.css",
                 "date-range/datetime.less"
             ],
             "concat" : "lib.css"
