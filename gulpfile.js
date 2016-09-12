@@ -126,7 +126,7 @@ gulp.task('production', function(){
     gulp.src(files.style)
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(concat(files.bundle.style))
-        .pipe(gulp.dest("dist/css"))
+        .pipe(gulp.dest("dist/css"));
 
     gulp.src(files.script)
         .pipe(uglify())
