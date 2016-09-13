@@ -73,10 +73,36 @@
   background: @footer-bottom-background;
   text-align: right;
 
+  .container {
+    position: relative;
+    .responsive-min-xs({
+      padding-left: 140px;
+    });
+  }
+
 
   .copy {
     margin-top: 1px;
     color: #fff;
     font-size: 10px;
+  }
+
+  .tb-logo {
+    display: block;
+    width: 94px;
+    height: 41px;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    margin-top: -20px;
+    background: url("../img/general-sprite.png") no-repeat;
+    background-position: 0 -57px;
+    .responsive-max-xxs({
+      display: none;
+    });
+  }
+
+  .img {
+    max-width: 100%;
   }
 }
