@@ -1,0 +1,108 @@
+@footer-content-background: #e5f4ff;
+@footer-content-menu-color: #333333;
+@footer-content-menu-bold-color: #000;
+@footer-content-menu-font-size: 10px;
+@footer-content-menu-bold-font-size: 12px;
+@footer-bottom-background: #1f4266;
+
+.footer-content {
+  background: @footer-content-background;
+
+  .menu-wrapper {
+    &:nth-child(3n+1) {
+      .responsive-sm({
+        clear: left;
+      });
+    }
+    &:nth-child(2n+1) {
+      .responsive-xs({
+        clear: left;
+      });
+    }
+
+    &:first-child .menu {
+      .responsive-min-md({
+        padding-left: 20px;
+      });
+    }
+  }
+
+  .menu {
+    padding: 10px 0 0;
+    list-style: none;
+
+    li {
+
+      a {
+        display: block;
+        padding: 5px 0;
+        color: @footer-content-menu-color;
+        font-size: @footer-content-menu-font-size;
+      }
+    }
+
+    &.bold {
+      li {
+        a {
+          color: @footer-content-menu-bold-color;
+          font-size: @footer-content-menu-bold-font-size;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .info {
+    padding: 10px 20px;
+    border-top: solid 1px #666666;
+    color: #333333;
+
+    .text {
+      font-size: 10px;
+    }
+
+    .ref {
+      float: right;
+      font-size: 12px;
+    }
+  }
+}
+
+.footer-bottom {
+  padding: 5px 0 8px;
+  background: @footer-bottom-background;
+  text-align: right;
+
+  .container {
+    position: relative;
+    .responsive-min-xs({
+      padding-left: 140px;
+    });
+  }
+
+
+  .copy {
+    margin-top: 1px;
+    color: #fff;
+    font-size: 10px;
+  }
+
+  .tb-logo {
+    display: block;
+    width: 94px;
+    height: 41px;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    margin-top: -20px;
+    background: url("../img/general-sprite.png") no-repeat;
+    background-position: 0 -57px;
+    .responsive-max-xxs({
+      display: none;
+    });
+  }
+
+  .img {
+    max-width: 100%;
+  }
+}
