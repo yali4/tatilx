@@ -4,14 +4,14 @@ var path        = require("path"),
     uglify      = require('gulp-uglify'),
     less        = require('gulp-less'),
     cleanCSS    = require('gulp-clean-css'),
-    builder     = require('./builder'),
-    LessAutoprefix = require('less-plugin-autoprefix'),
-    autoprefix  = new LessAutoprefix({ browsers: ['last 2 versions'] });
-
-var browserSync = require('browser-sync').create();
-var extender = require('gulp-html-extend');
+    extender    = require('gulp-html-extend'),
+    builder     = require('./builder');
 
 var root = path.resolve(__dirname);
+var browserSync = require('browser-sync').create();
+
+var LessAutoprefix  = require('less-plugin-autoprefix'),
+    autoprefix      = new LessAutoprefix({ browsers: ['last 2 versions'] });
 
 var files = {
 
@@ -35,9 +35,6 @@ var files = {
     }
 
 };
-
-// The default task (called when you run `gulp` from cli)
-gulp.task('default', ['']);
 
 gulp.task('styles', function(){
 
@@ -157,23 +154,13 @@ gulp.task('extend', function() {
 
 });
 
-gulp.task('browsersync',function () {
-
-    browserSync.init({
-        server: {
-            baseDir: "./dist"
-        }
-    });
-
-});
-
 gulp.task('watch', function(){
 
-    // normal watch
+    // html and javascript files
     gulp.watch('./source/app/views/**/*.html', ['extend']);
     gulp.watch('./source/app/js/**/*.js', ['scripts']);
 
-    // builder
+    // stylesheet files
     gulp.watch([
         './source/app/css/**/*.less',
         './source/plugins/**/*.css',
@@ -183,9 +170,30 @@ gulp.task('watch', function(){
     // static images
     gulp.watch('./source/images/**/*', ['static']);
 
-    // dist directory
-    gulp.watch(["./dist/*", "./dist/**/*"], browserSync.reload);
+});
+
+gulp.task('live', ['default'], function(){
+
+    // init browser sync
+    browserSync.init({
+        server: {
+            baseDir: "./dist"
+        }
+    });
+
+    // reload browser sync
+    gulp.watch(["./dist/*", "./dist/**/*"], function () {
+
+        if ( browserSync.active ) browserSync.reload();
+
+    });
 
 });
 
-gulp.task('live', ['extend', 'styles', 'scripts', 'static', 'watch', 'browsersync']);
+// The default task (called when you run `gulp` from cli)
+gulp.task('default', ['extend', 'styles', 'scripts', 'static'], function(){
+
+    // start watch
+    gulp.start('watch');
+
+});
