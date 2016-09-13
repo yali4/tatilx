@@ -1,0 +1,69 @@
+// old price
+@card-old-price-color: #999999;
+@card-small-old-price-font-size: 12px;
+
+// current price
+@card-current-price-font-size: 24px;
+@card-small-current-price-font-size: 18px;
+
+.card-item {
+
+  &.small-card {
+
+    .price-group {
+
+      .old-price {
+        font-size: @card-small-old-price-font-size;
+      }
+
+      .current-price {
+        font-size: @card-small-current-price-font-size;
+      }
+
+    }
+
+  }
+
+  .price-group {
+    display: table;
+    width: 100%;
+
+    > span {
+      display: block;
+      margin: 3px 0;
+      text-align: left;
+
+      .responsive-min-xs({
+        text-align: right;
+      });
+
+      /*
+      .responsive-max-xxs({
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 10px;
+        margin: 0;
+        width: 50%;
+        border-right: solid 1px @card-border-color;
+        text-align: center;
+      });
+
+      &:last-child {
+        border-right: 0;
+      }
+      */
+
+    }
+
+    .old-price {
+      color: @card-old-price-color;
+      text-decoration: line-through;
+    }
+
+    .current-price {
+      font-size: @card-current-price-font-size;
+    }
+
+  }
+
+}
