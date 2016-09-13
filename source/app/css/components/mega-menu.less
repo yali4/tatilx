@@ -1,5 +1,5 @@
 @mega-menu-background: #fff;
-@mega-menu-border-top-color: #cccccc;
+@mega-menu-border-color: #cccccc;
 @mega-menu-list-background: #e5f4ff;
 @mega-menu-title-font-color: #000;
 @mega-menu-title-font-size: 14px;
@@ -13,8 +13,9 @@
   padding: 0 20px;
   width: 100%;
   background: @mega-menu-background;
-  border-top: solid 1px @mega-menu-border-top-color;
+  border: solid 1px @mega-menu-border-color;
   z-index: 1001;
+  .box-shadow(0 4px 10px 0px rgba(0,0,0,0.25));
   display: none;
   .responsive-min-sm({
     position: absolute;
@@ -36,7 +37,6 @@
 
     &:hover {
       background: @mega-menu-list-background;
-      .box-shadow(3px 3px 10px 0px rgba(0,0,0,0.1));
 
       .image-box {
         .text {
