@@ -1,0 +1,72 @@
+@services-border-top-color: #666666;
+@services-icon-color: #fff;
+@services-icon-background: #003366;
+@services-icon-border-radius: 100%;
+@services-text-color: #003366;
+@services-text-font-size: 14px;
+
+.services {
+  padding: 25px 0;
+  border-top: solid 1px @services-border-top-color;
+  color: @services-text-color;
+  text-align: center;
+  .responsive-max-sm({
+    padding: 20px 0;
+  });
+
+
+  .service-item {
+    .responsive-max-sm({
+      margin: 5px 0;
+    });
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      padding: 4px;
+      background: @services-icon-background;
+      border-radius: @services-icon-border-radius;
+      color: @services-icon-color;
+      line-height: 36px;
+    }
+
+    .icon-wrapper, .text {
+      .responsive-min-xs({
+        display: table-cell;
+      });
+      .responsive-xxs({
+        display: block;
+        margin-top: 5px;
+        text-align: center;
+      });
+    }
+
+    .icon-wrapper {
+      vertical-align: top;
+    }
+
+    .text {
+      padding-left: 14px;
+      vertical-align: middle;
+      .responsive-min-xs({
+        text-align: left;
+      });
+    }
+
+    .tb-price-01 {
+      font-size: 33px;
+    }
+
+    .tb-security {
+      font-size: 25px;
+    }
+
+    .tb-insurance {
+      font-size: 27px;
+    }
+
+    .tb-call {
+      font-size: 26px;
+    }
+  }
+}
