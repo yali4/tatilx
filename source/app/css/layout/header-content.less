@@ -174,12 +174,12 @@
 
   .table-row {
 
-    > .icon-addon,
-    > .col-fixed {
-      width: @search-fixed-col-width;
+    > .icon-addon {
+      padding: 0 5px;
     }
 
     > .col-fixed {
+      width: @search-fixed-col-width;
       pointer-events: none;
 
       .fa {
@@ -188,11 +188,11 @@
 
     }
 
-    > .fixed-case {
+    > .fixed-gutter {
       padding-left: @search-fixed-col-width;
     }
 
-    > .element-case {
+    > .fixed-height {
       height: @search-element-height;
     }
 
