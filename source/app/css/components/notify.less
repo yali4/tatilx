@@ -1,0 +1,44 @@
+// general
+@notify-font-size: 16px;
+@notify-icon-font-size: 18px;
+@notify-inner-padding: 12px;
+
+// colors
+@notify-default-color: #cccccc;
+@notify-danger-color: #ff0033;
+@notify-warning-color: #ff6600;
+
+.notify {
+  margin: 10px 0;
+  padding: @notify-inner-padding;
+  color: @notify-default-color;
+  font-size: @notify-font-size;
+  border: solid 1px @notify-default-color;
+  text-align: center;
+
+  &.notify-strong {
+    font-weight: 600;
+  }
+
+  &.notify-danger {
+    color: @notify-danger-color;
+    border: solid 1px @notify-danger-color;
+  }
+
+  &.notify-warning {
+    color: @notify-warning-color;
+    border: solid 1px @notify-warning-color;
+  }
+
+  > i,
+  > span {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  > i {
+    margin-right: 10px;
+    font-size: @notify-icon-font-size;
+  }
+
+}
