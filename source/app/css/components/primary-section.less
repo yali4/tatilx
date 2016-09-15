@@ -1,5 +1,7 @@
+// general
+@section-inner-gutter: 10px;
+
 // title
-@section-title-margin: 10px;
 @section-title-font-color: #003366;
 @section-title-font-size: 18px;
 @section-title-font-weight: 600;
@@ -14,24 +16,36 @@
 @import "_primary-section/location-list.less";
 
 .primary-section {
+  position: relative;
+  padding-top: @section-inner-gutter;
 
-  .section-title {
-    margin: @section-title-margin 0;
+  > .section-title {
+    margin: 0;
+    padding-bottom: @section-inner-gutter;
     color: @section-title-font-color;
     font-size: @section-title-font-size;
     font-weight: @section-title-font-weight;
   }
 
-  .section-body {
+  > .section-body {
     color: @section-font-color;
     font-size: @section-font-size;
     min-height: 10px;
   }
 
   &.bordered-section {
+    padding-bottom: @section-inner-gutter;
 
-    .section-body {
+    > .section-body {
       border: solid 1px @section-body-border-color;
+    }
+
+  }
+
+  &.card-list-section {
+
+    > .section-title {
+      padding-bottom: 0;
     }
 
   }
