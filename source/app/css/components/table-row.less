@@ -5,28 +5,33 @@
   min-height: 34px;
   border-collapse: separate;
 
+  &.equal-col {
+    table-layout: fixed;
+  }
+
   > .col-fixed {
     position: absolute;
     height: 100%;
   }
   
-  > .col-addon,
-  > .col-case {
+  > .col-wide,
+  > .col-narrow {
     position: relative;
     display: table-cell;
     vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  > .col-wide {
+    width: 1000px;
+  }
+
+  > .col-narrow {
+    width: 1px;
   }
 
   > .center {
     text-align: center;
-  }
-
-  > .nowrap {
-    white-space: nowrap;
-  }
-
-  > .col-addon {
-    width: 1px;
   }
 
 }
