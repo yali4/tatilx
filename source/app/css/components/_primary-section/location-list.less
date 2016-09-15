@@ -1,0 +1,150 @@
+// location header
+@location-header-background: #e5f4ff;
+
+// location list
+@location-gutter-width: 15px;
+
+// location item
+@location-border-color: #aaaaaa;
+@location-inner-gutter-width: 10px;
+
+// location link item
+@link-font-color: #333333;
+@link-font-size: 12px;
+@link-small-font-size: 10px;
+@link-hover-font-color: #33ccff;
+
+
+.primary-section {
+
+  .location-header {
+    padding: 15px 30px;
+    line-height: 18px;
+    text-align: center;
+    color: #003366;
+    font-style: italic;
+    background: @location-header-background;
+  }
+
+  .location-list {
+    margin: 0;
+    padding: 0 @location-gutter-width;
+    list-style: none;
+
+    &.bordered-list {
+
+      .location-item {
+        border-bottom: solid 1px @location-border-color;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+      }
+
+    }
+
+    &.responsive-list {
+      display: table;
+      width: 100%;
+
+      .location-item {
+        float: left;
+        width: 100%;
+
+        .responsive-min-xs({
+          width: 50%;
+        });
+
+        .responsive-min-sm({
+          width: 33.33%;
+        });
+
+        .responsive-min-md({
+          width: 25%;
+        });
+
+        .responsive-min-lg({
+          width: 16.66%;
+        });
+
+      }
+
+    }
+
+    &.guttered-list {
+      padding: 10px @location-gutter-width;
+
+      .location-item {
+        padding: @location-inner-gutter-width 5px;
+      }
+
+    }
+
+    .location-item {
+      padding: @location-inner-gutter-width 0;
+
+      .location-link {
+        display: table;
+        color: @link-font-color;
+        font-size: @link-font-size;
+        min-height: 30px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: @link-hover-font-color;
+        }
+
+        &.show-all-link {
+          color: @link-hover-font-color;
+          text-decoration: underline;
+          text-align: right;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: @link-font-color;
+            text-decoration: none;
+          }
+
+        }
+
+        > span {
+          display: table-cell;
+          vertical-align: middle;
+
+          &.inner-span {
+            width: 1000px;
+            line-height: 15px;
+
+            &.normal-span {
+              width: auto;
+            }
+
+            small {
+              font-size: @link-small-font-size;
+              line-height: normal;
+            }
+
+          }
+
+          &.left-span {
+            padding: 0 10px 0 5px;
+            font-size: 24px;
+          }
+
+          &.right-span {
+            padding: 0 5px 0 10px;
+            font-size: 18px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

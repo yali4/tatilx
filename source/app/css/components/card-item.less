@@ -2,6 +2,7 @@
 @card-font-color: #1c1823;
 @card-font-size: 14px;
 @card-small-font-size: 10px;
+@card-margin-width: 10px;
 @card-border-color: #cccccc;
 
 // title
@@ -14,13 +15,13 @@
 @card-small-fixed-column-width: 90px;
 
 // extensions
-@import "card-item/price-group.less";
+@import "_card-item/price-group.less";
 
 .card-item {
   color: @card-font-color;
   font-size: @card-font-size;
   border: solid 1px @card-border-color;
-  margin-bottom: 10px;
+  margin: @card-margin-width 0;
 
   &.small-card {
     font-size: @card-small-font-size;

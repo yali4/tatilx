@@ -1,0 +1,39 @@
+// title
+@section-title-margin: 10px;
+@section-title-font-color: #003366;
+@section-title-font-size: 18px;
+@section-title-font-weight: 600;
+
+// body
+@section-body-border-color: #cccccc;
+@section-font-color: #545454;
+@section-font-size: 12px;
+
+// extensions
+@import "_primary-section/media-list.less";
+@import "_primary-section/location-list.less";
+
+.primary-section {
+
+  .section-title {
+    margin: @section-title-margin 0;
+    color: @section-title-font-color;
+    font-size: @section-title-font-size;
+    font-weight: @section-title-font-weight;
+  }
+
+  .section-body {
+    color: @section-font-color;
+    font-size: @section-font-size;
+    min-height: 10px;
+  }
+
+  &.bordered-section {
+
+    .section-body {
+      border: solid 1px @section-body-border-color;
+    }
+
+  }
+
+}
