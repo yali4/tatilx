@@ -39,6 +39,7 @@
 
     .human-caption {
       position: relative;
+      cursor: pointer;
     }
 
     .human-wrapper {
@@ -143,22 +144,21 @@
     .bordered {
 
       &:before {
+        content: "";
+
+        .responsive-max-sm({
+          display: block;
+          border-top: solid 1px @search-border-color;
+        });
+
         .responsive-min-md({
           position: absolute;
           left: 0;
           top: 5px;
           bottom: 5px;
           border-left: solid 1px @search-border-color;
-          content: "";
         });
-      }
 
-      &:before {
-        .responsive-max-sm({
-          display: block;
-          border-top: solid 1px @search-border-color;
-          content: "";
-        });
       }
 
     }
