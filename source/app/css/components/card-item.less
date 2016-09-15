@@ -16,8 +16,9 @@
 @card-inline-title-font-weight: 600;
 
 // fixed column
-@card-fixed-column-width: 140px;
-@card-small-fixed-column-width: 90px;
+@card-fixed-column-width: 130px;
+@card-medium-fixed-column-width: 115px;
+@card-small-fixed-column-width: 80px;
 
 // extensions
 @import "_card-item/price-group.less";
@@ -29,6 +30,7 @@
   border: solid 1px @card-border-color;
   margin: @card-margin-width 0;
 
+  // small card
   &.small-card {
     font-size: @card-small-font-size;
 
@@ -52,22 +54,40 @@
 
     }
 
+  }
 
+  // medium card
+  &.medium-card {
+
+    .card-footer {
+
+      .card-column {
+
+        &.fixed-column {
+          .responsive-min-xs({
+            width: @card-medium-fixed-column-width;
+          });
+        }
+
+      }
+
+    }
 
   }
 
+  // header and footer
   .card-header,
   .card-footer {
     position: relative;
   }
 
+  // header
   .card-header {
     margin: -1px;
 
     .card-image {
       display: block;
       width: 100%;
-      //max-height: 160px;
     }
 
     .card-shadow {
@@ -82,6 +102,7 @@
 
   }
 
+  // inline
   .card-inline {
     position: absolute;
     bottom: 0;
@@ -133,6 +154,7 @@
 
   }
 
+  // footer
   .card-footer {
     padding: 10px;
     display: table;
@@ -207,6 +229,7 @@
 
   }
 
+  // title
   .card-title {
     padding: 0;
     margin: 0;
@@ -214,6 +237,7 @@
     font-weight: @card-title-font-weight;
   }
 
+  // specifications
   .card-specifications {
     display: block;
     margin-top: 5px;
@@ -240,6 +264,7 @@
 
   }
 
+  // sticky
   .card-sticky {
     position: absolute;
     padding: 10px 0;
