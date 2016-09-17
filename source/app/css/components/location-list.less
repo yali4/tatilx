@@ -47,13 +47,11 @@
   // double
   &.double-list {
     display: table;
-    padding: 0 5px;
     width: 100%;
 
     .location-item {
       float: left;
       width: 50%;
-      padding: 5px 0;
       border-bottom: solid 1px @location-border-color;
 
       .responsive-max-xxs({
@@ -81,15 +79,6 @@
         }
 
       });
-
-    }
-
-    &.narrow-list {
-
-      .location-item {
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
 
     }
 
@@ -130,6 +119,26 @@
 
     .location-item {
       padding: @location-inner-gutter-width 5px;
+    }
+
+  }
+
+  // narrow
+  &.narrow-list {
+    padding: 0 5px;
+
+    .location-item {
+      padding: (@location-inner-gutter-width/2) 0;
+    }
+
+  }
+
+  // extra narrow
+  &.extra-narrow {
+
+    .location-item {
+      padding-top: 3px;
+      padding-bottom: 3px;
     }
 
   }
