@@ -5,6 +5,7 @@
 
 // large
 @notify-large-font-size: 18px;
+@notify-large-icon-font-size: 20px;
 @notify-large-inner-padding: 25px;
 
 // colors
@@ -27,6 +28,12 @@
   &.notify-large {
     font-size: @notify-large-font-size;
     padding: @notify-large-inner-padding;
+
+    > i {
+      margin-right: 15px;
+      font-size: @notify-large-icon-font-size;
+    }
+
   }
 
   &.notify-danger {
