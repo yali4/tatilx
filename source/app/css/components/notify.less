@@ -3,8 +3,12 @@
 @notify-icon-font-size: 18px;
 @notify-inner-padding: 12px;
 
+// large
+@notify-large-font-size: 18px;
+@notify-large-inner-padding: 25px;
+
 // colors
-@notify-default-color: #cccccc;
+@notify-default-color: #003366;
 @notify-danger-color: #ff0033;
 @notify-warning-color: #ff6600;
 
@@ -20,6 +24,11 @@
     font-weight: 600;
   }
 
+  &.notify-large {
+    font-size: @notify-large-font-size;
+    padding: @notify-large-inner-padding;
+  }
+
   &.notify-danger {
     color: @notify-danger-color;
     border: solid 1px @notify-danger-color;
@@ -31,6 +40,7 @@
   }
 
   > i,
+  > a,
   > span {
     display: inline;
     vertical-align: middle;
@@ -39,6 +49,18 @@
   > i {
     margin-right: 10px;
     font-size: @notify-icon-font-size;
+  }
+
+  > a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+
   }
 
 }
