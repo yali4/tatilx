@@ -17,6 +17,7 @@
   z-index: 1001;
   .box-shadow(0 4px 10px 0px rgba(0,0,0,0.25));
   display: none;
+
   .responsive-min-sm({
     position: absolute;
   });
@@ -109,18 +110,26 @@
     }
   }
 
-  .table-row {
-    .responsive-max-sm({
-      display: block;
-    });
-    > * {
-      .responsive-min-md({
+  // for responsive
+  .responsive-min-md({
+
+    .menu-wrapper-outer {
+      display: table;
+      table-layout: fixed;
+      border-collapse: separate;
+      width: 100%;
+      margin: 0;
+
+      > .menu-wrapper {
         display: table-cell;
         vertical-align: top;
-        float: none;
         border-right: solid 10px #fff;
         border-left: solid 10px #fff;
-      });
+        float: none;
+      }
+
     }
-  }
+
+  });
+
 }
