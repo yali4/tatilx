@@ -1,19 +1,13 @@
 // general
 @section-inner-gutter: 10px;
+@section-border-color: #cccccc;
+@section-font-color: #545454;
+@section-font-size: 12px;
 
 // title
 @section-title-font-color: #003366;
 @section-title-font-size: 18px;
 @section-title-font-weight: 600;
-
-// body
-@section-body-border-color: #cccccc;
-@section-font-color: #545454;
-@section-font-size: 12px;
-
-// extensions
-@import "_primary-section/media-list.less";
-@import "_primary-section/location-list.less";
 
 .primary-section {
   position: relative;
@@ -31,13 +25,23 @@
     color: @section-font-color;
     font-size: @section-font-size;
     min-height: 10px;
+
+    > .section-well {
+      padding: 15px 30px;
+      line-height: 18px;
+      text-align: center;
+      color: #003366;
+      font-style: italic;
+      background: #e5f4ff;
+    }
+
   }
 
   &.bordered-section {
     padding-bottom: @section-inner-gutter;
 
     > .section-body {
-      border: solid 1px @section-body-border-color;
+      border: solid 1px @section-border-color;
     }
 
   }

@@ -1,0 +1,192 @@
+// location list
+@location-gutter-width: 15px;
+
+// location item
+@location-border-color: #aaaaaa;
+@location-inner-gutter-width: 10px;
+
+// location link item
+@link-font-color: #333333;
+@link-font-size: 12px;
+@link-small-font-size: 10px;
+@link-hover-font-color: #33ccff;
+
+.location-list {
+  margin: 0;
+  padding: 0 @location-gutter-width;
+  list-style: none;
+
+  &.bordered-list {
+
+    .location-item {
+      border-bottom: solid 1px @location-border-color;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+    }
+
+  }
+
+  &.double-list {
+    display: table;
+    padding: 0 5px;
+    width: 100%;
+
+    .location-item {
+      float: left;
+      width: 50%;
+      padding: 5px 0;
+      border-bottom: solid 1px @location-border-color;
+
+      .responsive-max-xxs({
+        width: 100%;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+      });
+
+      .responsive-min-xs({
+
+        &:nth-child(odd) {
+          padding-right: 10px;
+        }
+
+        &:nth-child(even) {
+          padding-left: 10px;
+        }
+
+        &:last-child,
+        &:nth-last-child(2):nth-child(odd) {
+          border-bottom: 0;
+        }
+
+      });
+
+      .location-link {
+        font-size: 14px;
+      }
+
+    }
+
+    &.narrow-list {
+
+      .location-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+
+    }
+
+  }
+
+  &.responsive-list {
+    display: table;
+    width: 100%;
+
+    .location-item {
+      float: left;
+      width: 100%;
+
+      .responsive-min-xs({
+        width: 50%;
+      });
+
+      .responsive-min-sm({
+        width: 33.33%;
+      });
+
+      .responsive-min-md({
+        width: 25%;
+      });
+
+      .responsive-min-lg({
+        width: 16.66%;
+      });
+
+    }
+
+  }
+
+  &.guttered-list {
+    padding: 10px @location-gutter-width;
+
+    .location-item {
+      padding: @location-inner-gutter-width 5px;
+    }
+
+  }
+
+  .location-item {
+    padding: @location-inner-gutter-width 0;
+
+    .location-link {
+      display: table;
+      color: @link-font-color;
+      font-size: @link-font-size;
+      text-decoration: none;
+      min-height: 30px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: @link-hover-font-color;
+        text-decoration: underline;
+      }
+
+      &.link-inverse {
+        color: @link-hover-font-color;
+        text-decoration: underline;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: @link-font-color;
+          text-decoration: none;
+        }
+
+      }
+
+      > span {
+        display: table-cell;
+        vertical-align: middle;
+
+        &.right-text {
+          text-align: right;
+        }
+
+        &.inner-span {
+          width: 1000px;
+          line-height: 15px;
+
+          &.normal-span {
+            width: auto;
+          }
+
+          small {
+            font-size: @link-small-font-size;
+            line-height: normal;
+          }
+
+        }
+
+        &.left-span {
+          padding: 0 10px 0 5px;
+          font-size: 24px;
+        }
+
+        &.right-span {
+          padding: 0 5px 0 10px;
+          font-size: 18px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
