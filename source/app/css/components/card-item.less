@@ -5,15 +5,24 @@
 @card-margin-width: 10px;
 @card-border-color: #cccccc;
 
+// content
+@card-vertical-gutter: 10px;
+@card-horizontal-gutter: 10px;
+
+// column
+@card-column-vertical-gutter: 6px;
+@card-column-horizontal-gutter: 5px;
+
 // title
 @card-title-font-size: 16px;
 @card-small-title-font-size: 12px;
 @card-title-font-weight: 600;
 
-// inline title
-@card-inline-title-font-size: 20px;
-@card-inline-title-font-color: #ffffff;
-@card-inline-title-font-weight: 600;
+// overlay title
+@card-overlay-title-font-size: 20px;
+@card-overlay-small-title-font-size: 18px;
+@card-overlay-title-font-color: #ffffff;
+@card-overlay-title-font-weight: 600;
 
 // fixed column
 @card-fixed-column-width: 130px;
@@ -29,27 +38,6 @@
   font-size: @card-font-size;
   border: solid 1px @card-border-color;
   margin: @card-margin-width 0;
-
-  // horizontal card
-  &.card-horizontal {
-    display: table;
-    width: 100%;
-
-    &.card-equal {
-      table-layout: fixed;
-    }
-
-    > .card-left,
-    > .card-right {
-      display: table-cell;
-      vertical-align: top;
-    }
-
-    > .card-right {
-      width: 1000px;
-    }
-
-  }
 
   // small card
   &.small-card {
@@ -96,10 +84,38 @@
 
   }
 
-  // figure and content
+  // grid, figure and content
+  .card-grid,
   .card-figure,
   .card-content {
     position: relative;
+  }
+
+  // grid
+  .card-grid {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+
+    > .card-column {
+      display: table-cell;
+      vertical-align: top;
+      padding: 0 5px;
+
+      &:first-child {
+        padding: 0 10px 0 0;
+      }
+
+      &:last-child {
+        padding: 0 0 0 10px;
+      }
+
+      &.column-center {
+        vertical-align: middle;
+      }
+
+    }
+
   }
 
   // figure
@@ -146,9 +162,14 @@
         right: 0;
 
         .card-title {
-          color: @card-inline-title-font-color;
-          font-size: @card-inline-title-font-size;
-          font-weight: @card-inline-title-font-weight;
+          color: @card-overlay-title-font-color;
+          font-size: @card-overlay-title-font-size;
+          font-weight: @card-overlay-title-font-weight;
+
+          &.small-title {
+            font-size: @card-overlay-small-title-font-size;
+          }
+
         }
 
         .right-link {
@@ -196,7 +217,7 @@
 
   // content
   .card-content {
-    padding: 10px;
+    padding: @card-vertical-gutter @card-horizontal-gutter;
     display: table;
     border-collapse: separate;
     width: 100%;
@@ -205,9 +226,42 @@
       table-layout: fixed;
     }
 
+    // fifty
+    &.vertical-fifty {
+      padding: (@card-vertical-gutter/2) @card-horizontal-gutter;
+    }
+
+    &.horizontal-fifty {
+      padding: @card-vertical-gutter (@card-horizontal-gutter/2);
+    }
+
+    &.both-fifty {
+      padding: (@card-vertical-gutter/2) (@card-horizontal-gutter/2);
+    }
+
+    // narrow
+    &.vertical-narrow {
+      padding: 0 @card-horizontal-gutter;
+
+      > .card-column {
+        padding: 0 @card-column-horizontal-gutter;
+      }
+
+    }
+
+    &.horizontal-narrow {
+      padding: @card-vertical-gutter 0;
+
+      > .card-column {
+        padding: @card-column-vertical-gutter 0;
+      }
+
+    }
+
+    // normal column
     > .card-column {
       display: table-cell;
-      padding: 6px 5px;
+      padding: @card-column-vertical-gutter @card-column-horizontal-gutter;
 
       &.wide-column {
         width: 1000px;
